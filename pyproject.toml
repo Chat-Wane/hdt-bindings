@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "hdt-bindings"
+version = "0.0.0"
+description = "HDT bindings for python."
+authors = [ "chat-wane <grumpy.chat.wane@gmail.com>" ]
+packages = [
+  { include = "src" }
+]
+exclude = [ "Cargo.toml", "*.rs" ]
+build = "setup.py"
+
+[tool.poetry.dependencies]
+python   = "^3.10.0" ## lower probably ok, whereas 3.10 surely is
+pybind11 = "^2.9.2" 
+
+[build-system]
+requires = ["poetry>=0.12", "wheel", "pybind11==2.9.2", "setuptools==62.1.0"]
+build-backend = "poetry.masonry.api"
