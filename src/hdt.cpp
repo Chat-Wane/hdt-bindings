@@ -10,8 +10,10 @@
 namespace py = pybind11;
 
 // (TODO) name the module with package name
-PYBIND11_MODULE(hdt_bindings, m) {
+PYBIND11_MODULE(hdt_python, m) {
   py::class_<LazyIDIterator>(m, "LazyIDIterator", "LazyIDIterator doc")
+    .def("reset", &LazyIDIterator::reset, "reset doc")
+    .def("skip", &LazyIDIterator::skip, py::arg("index"))
     .def("next", &LazyIDIterator::next, "next doc")
          // [](LazyIDIterator& self) {
          //   self.next();
@@ -47,5 +49,8 @@ PYBIND11_MODULE(hdt_bindings, m) {
          py::arg("offset") = 0)
     .def("get_subject_id"  , &HDTDocument::getSubjectID  , py::arg("subject"))
     .def("get_predicate_id", &HDTDocument::getPredicateID, py::arg("predicate"))
-    .def("get_object_id"   , &HDTDocument::getObjectID   , py::arg("object"));
+    .def("get_object_id"   , &HDTDocument::getObjectID   , py::arg("object"))
+    .def("get_subject"  , &HDTDocument::getSubject  , py::arg("subject"))
+    .def("get_predicate", &HDTDocument::getPredicate, py::arg("predicate"))
+    .def("get_object"   , &HDTDocument::getObject   , py::arg("object"));
 }

@@ -1,6 +1,6 @@
 ## https://doc.rust-lang.org/cargo/reference/config.html
 [package]
-name = "hdt_bindings"
+name = "hdt_python"
 version = "0.0.0"
 edition = "2021"
 

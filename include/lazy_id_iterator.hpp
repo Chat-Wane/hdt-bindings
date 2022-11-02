@@ -40,6 +40,8 @@ public:
   int predicateID() const;
   int objectID()    const;
 
+  void reset();
+  void skip(unsigned int index);
   bool next();
   shared_ptr<string> subject();
   shared_ptr<string> predicate();

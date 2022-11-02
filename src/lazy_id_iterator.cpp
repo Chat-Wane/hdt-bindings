@@ -22,6 +22,28 @@ size_t LazyIDIterator::cardinality() const {
   return it->estimatedNumResults();
 }
 
+void LazyIDIterator::reset() {
+  it->goToStart();
+}
+
+void LazyIDIterator::skip(unsigned int index) {
+  it->goToStart();
+  size_t cardinality = it->estimatedNumResults();
+  offset = index;
+  if (offset > 0 && offset >= cardinality) {
+    // hdt does not allow to skip past beyond the estimated nb of results,
+    // so we may have a few results to skip manually
+    unsigned int remainingSteps = offset - cardinality + 1;
+    it->skip(cardinality - 1);
+    while (it->hasNext() && remainingSteps > 0) {
+      it->next();
+      remainingSteps--;
+    }
+  } else if (offset > 0) {
+    it->skip(offset);
+  }
+}
+
 bool LazyIDIterator::next() {
   if (!it->hasNext()) {return false;};
 

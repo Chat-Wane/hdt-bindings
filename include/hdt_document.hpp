@@ -29,5 +29,9 @@ public:
   int getSubjectID  (string subject)   const;
   int getPredicateID(string predicate) const;
   int getObjectID   (string object)    const;
+  
+  string getSubject  (int subject)   const;
+  string getPredicate(int predicate) const;
+  string getObject   (int object)    const;
 };
 

@@ -1,11 +1,10 @@
-## from https://github.com/RDFLib/rdflib-hdt/blob/master/setup.py
+# from https://github.com/RDFLib/rdflib-hdt/blob/master/setup.py
 
 from setuptools import find_packages, setup, Extension
 from os import listdir
 import pybind11
 
 
-
 def list_files(path: str, extension=".cpp", exclude="S.cpp"):
     """List paths to all files that ends with a given extension"""
     return ["%s/%s" % (path, f) for f in listdir(path) if f.endswith(extension) and (not f.endswith(exclude))]
@@ -60,14 +59,14 @@ include_dirs = [
 extra_compile_args = ["-std=c++14"]
 
 # build HDT extension
-hdt_extension = Extension("hdt_bindings",
+hdt_extension = Extension("hdt_python",
                           sources=sources,
                           include_dirs=include_dirs,
                           extra_compile_args=extra_compile_args,
                           language='c++')
 
 setup(
-    name="hdt_bindings",
+    name="hdt_python",
     version="0.0.0",
     author="chat-wane",
     author_email="grumpy.chat.wane@gmail.com",
@@ -77,6 +76,5 @@ setup(
     keywords=["rdflib", "hdt", "rdf", "semantic web", "search"],
     license="MIT",
     packages=find_packages(exclude=["tests"]),
-    ext_modules=[hdt_extension]
-)
+    ext_modules=[hdt_extension])
 

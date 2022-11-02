@@ -101,3 +101,15 @@ int HDTDocument::getObjectID(string object) const {
   if (result == 0 && !object.empty()) { return -1; }
   return result;
 }
+
+string HDTDocument::getSubject(int subject) const {
+  return hdt->getDictionary()->idToString(subject, SUBJECT);
+}
+
+string HDTDocument::getPredicate(int predicate) const {
+  return hdt->getDictionary()->idToString(predicate, PREDICATE);
+}
+
+string HDTDocument::getObject(int object) const {
+  return hdt->getDictionary()->idToString(object, OBJECT);
+}

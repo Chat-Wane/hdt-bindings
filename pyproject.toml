@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "hdt-bindings"
+name = "hdt-python"
 version = "0.0.0"
 description = "HDT bindings for python."
 authors = [ "chat-wane <grumpy.chat.wane@gmail.com>" ]
@@ -10,7 +10,7 @@ exclude = [ "Cargo.toml", "*.rs" ]
 build = "setup.py"
 
 [tool.poetry.dependencies]
-python   = "^3.10.0" ## lower probably ok, whereas 3.10 surely is
+python   = "^3.9.0" ## lower probably ok, whereas 3.10 surely is
 pybind11 = "^2.9.2" 
 
 [build-system]
